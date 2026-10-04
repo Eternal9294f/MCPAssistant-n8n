@@ -1,0 +1,178 @@
+{
+  "name": "MCP CLIENT",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c8b5151f-7a9c-444e-855b-8108dc123015",
+      "name": "When chat message received",
+      "webhookId": "0543d1de-455d-44be-bd75-442642783975"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "cfeff754-8632-47b7-a4b2-c106609815cc",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "endpointUrl": "https://api.githubcopilot.com/mcp/",
+        "authentication": "bearerAuth",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.4,
+      "position": [
+        304,
+        208
+      ],
+      "id": "a8630c70-6541-49b5-8065-416a0e5a4733",
+      "name": "Github MCP Client",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "8ReaDRQnBhJSLVPY",
+          "name": "Bearer Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "endpointUrl": "https://anaagar.app.n8n.cloud/mcp/6dc91b87-7738-4f72-94fc-05d6236e4136",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.4,
+      "position": [
+        464,
+        208
+      ],
+      "id": "04343039-0498-4227-9051-7033547231e6",
+      "name": "Own MCP Client"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        144,
+        208
+      ],
+      "id": "d2b7a21f-6ab0-4dc4-825a-3ef0219c70c9",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-5-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -16,
+        208
+      ],
+      "id": "1bdf1b8d-fe58-4a48-a25a-87ecd0d4e2b7",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Github MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Own MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "2611af1c-f61d-4fde-9d7a-2403b6b4ea0a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f23e7a2664b7440148a2fdaf65812d34bdd58c30e82627098df39b3ef87613ae"
+  },
+  "nodeGroups": [],
+  "id": "riYlleeA0kbdEhHv",
+  "tags": []
+}
