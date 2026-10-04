@@ -1,5 +1,5 @@
-# n8n-mcp-ai-assistant
-An AI-powered conversational assistant built with n8n that connects to external tools through MCP, enabling natural-language interaction with services such as Google Drive, Gmail, and GitHub.
+# n8n-MCP-ai-assistant
+An AI-powered conversational assistant built with n8n that uses the **Model Context Protocol** (MCP) to connect an AI agent with external tools, enabling natural-language interaction with services such as Google Drive, Gmail, and GitHub.
 
 ## Overview
 
